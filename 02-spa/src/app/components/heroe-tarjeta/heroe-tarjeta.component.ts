@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 })
 export class HeroeTarjetaComponent {
   @Input() heroe: any = {};
-  @Input() index: number;
-
   @Output() heroeSeleccionado: EventEmitter<number>;
 
   constructor(private router: Router) {
@@ -17,7 +15,7 @@ export class HeroeTarjetaComponent {
   }
 
   verHeroe() {
-    this.heroeSeleccionado.emit(this.index);
+    this.heroeSeleccionado.emit(this.heroe.idx);
   }
 
 }

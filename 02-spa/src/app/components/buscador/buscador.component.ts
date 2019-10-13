@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HeroesService } from '../../servicios/heroes.service';
+import { HeroesService, Heroe } from '../../servicios/heroes.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { HeroesService } from '../../servicios/heroes.service';
   styles: []
 })
 export class BuscadorComponent implements OnInit {
-  heroes: any[] = [];
+  heroes: Heroe[] = [];
   termino: string;
 
   constructor(private router: Router,
