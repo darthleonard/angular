@@ -1,5 +1,7 @@
 <div class="card animated fadeIn fast">
-    <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre">
+    <div class="img-container">
+        <img [src]="heroe.img" class="card-img-top zoom" [alt]="heroe.nombre" (click)="verHeroe()">
+    </div>
     <div class="card-body">
         <h5 class="card-title">{{ heroe.nombre }}</h5>
         <p class="card-text"> {{ heroe.bio }} </p>
