@@ -6,16 +6,16 @@ body {
     margin-top: 1em;
 }
 
-.img-container:hover {
-    cursor: pointer;
-}
-
 .img-logo {
     width: 120px;
 }
 
 .img-container {
     overflow: hidden;
+}
+
+.img-container:hover {
+    cursor: pointer;
 }
 
 .zoom {

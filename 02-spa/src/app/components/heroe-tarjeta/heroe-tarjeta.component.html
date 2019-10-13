@@ -1,12 +1,12 @@
 <div class="card animated fadeIn fast">
-    <div class="img-container">
-        <img [src]="heroe.img" class="card-img-top zoom" [alt]="heroe.nombre" (click)="verHeroe()">
+    <div class="img-container" (click)="verHeroe()">
+        <img [src]=" heroe.img " class="card-img-top zoom " [alt]="heroe.nombre">
     </div>
-    <div class="card-body">
-        <h5 class="card-title">{{ heroe.nombre }}</h5>
-        <p class="card-text"> {{ heroe.bio }} </p>
-        <p class="card-text"><small class="text-muted"> {{heroe.aparicion}} </small></p>
-        <button (click)="verHeroe()" type="button" class="btn btn-outline-primary btn-block">Ver mas...</button>
-        <!-- <a [routerLink]="['/heroe', i]" href="" class="btn btn-outline-primary btn-block">Ver mas link</a> -->
+    <div class="card-body ">
+        <h5 class="card-title ">{{ heroe.nombre }}</h5>
+        <p class="card-text "> {{ heroe.bio }} </p>
+        <p class="card-text "><small class="text-muted "> {{heroe.aparicion}} </small></p>
+        <button (click)="verHeroe() " type="button " class="btn btn-outline-primary btn-block ">Ver mas...</button>
+        <!-- <a [routerLink]="[ '/heroe', i] " href=" " class="btn btn-outline-primary btn-block ">Ver mas link</a> -->
     </div>
 </div>
