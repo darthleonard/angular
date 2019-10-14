@@ -7,5 +7,9 @@ import { Lista } from '../models/lista.model';
 export class DeseosService {
   listas: Lista[] = [];
 
-  constructor() { }
+  constructor() {
+    const lista1 = new Lista("Recolectar");
+    const lista2 = new Lista("lista2");
+    this.listas.push(lista1, lista2);
+  }
 }
