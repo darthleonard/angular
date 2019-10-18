@@ -8,13 +8,22 @@ export class DeseosService {
   listas: Lista[] = [];
 
   constructor() {
-    const lista1 = new Lista("Recolectar");
-    const lista2 = new Lista("lista2");
-    this.listas.push(lista1, lista2);
+    this.cargarStorage();
   }
 
   crearLista(titulo: string) {
     const lista = new Lista(titulo);
     this.listas.push(lista);
+    this.guardarStorage();
+  }
+
+  guardarStorage() {
+    localStorage.setItem('data', JSON.stringify(this.listas));
+  }
+
+  cargarStorage() {
+    if (localStorage.getItem('data')) {
+      this.listas = JSON.parse(localStorage.getItem('data'));
+    }
   }
 }
