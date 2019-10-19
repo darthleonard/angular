@@ -32,4 +32,9 @@ export class DeseosService {
       this.listas = JSON.parse(localStorage.getItem('data'));
     }
   }
+
+  borrarLista(lista: Lista) {
+    this.listas = this.listas.filter(l => l.id !== lista.id);
+    this.guardarStorage();
+  }
 }
