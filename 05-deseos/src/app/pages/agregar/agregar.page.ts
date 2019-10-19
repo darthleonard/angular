@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DeseosService } from 'src/app/services/deseos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Lista } from 'src/app/models/lista.model';
@@ -9,7 +9,7 @@ import { ListaItem } from 'src/app/models/lista-item.model';
   templateUrl: './agregar.page.html',
   styleUrls: ['./agregar.page.scss'],
 })
-export class AgregarPage implements OnInit {
+export class AgregarPage {
   lista: Lista;
   nombreItem = '';
 
@@ -17,9 +17,6 @@ export class AgregarPage implements OnInit {
               private route: ActivatedRoute) {
     const listaId = this.route.snapshot.paramMap.get('listaId');
     this.lista = this.deseosService.obtenerLista(listaId);
-  }
-
-  ngOnInit() {
   }
 
   agregarItem() {

@@ -10,7 +10,7 @@ import { Lista } from 'src/app/models/lista.model';
   styleUrls: ['./listas.component.scss'],
 })
 export class ListasComponent {
-  @ViewChild(IonList) lista: IonList;
+  @ViewChild(IonList, {static: false}) lista: IonList;
   @Input() terminados = true;
 
   constructor(public deseosService: DeseosService,
@@ -18,11 +18,8 @@ export class ListasComponent {
               private alertCtrl: AlertController) { }
 
   listaSelecctionada(lista: Lista) {
-    if (this.terminados) {
-      this.router.navigateByUrl(`/tabs/tab2/agregar/${ lista.id }`);
-    } else {
-      this.router.navigateByUrl(`/tabs/tab1/agregar/${ lista.id }`);
-    }
+    const tab = this.terminados ? 'tab2' : 'tab1';
+    this.router.navigateByUrl(`/tabs/${tab}/agregar/${ lista.id }`);
   }
 
   borrarLista(lista: Lista) {
