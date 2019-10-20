@@ -18,7 +18,7 @@ export class ListasComponent {
   constructor(public deseosService: DeseosService,
               private alertService: AlertService,
               private router: Router,
-              private alertCtrl: AlertController) { console.log('constructor'); }
+              private alertCtrl: AlertController) { }
 
   listaSelecctionada(lista: Lista) {
     const tab = this.terminados ? 'tab2' : 'tab1';

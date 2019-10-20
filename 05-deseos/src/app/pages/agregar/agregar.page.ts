@@ -35,7 +35,6 @@ export class AgregarPage {
       .length;
     if (pendientes === 0) {
       this.lista.terminadaEn = new Date();
-      console.log(this.lista.terminadaEn);
       this.lista.terminada = true;
     } else {
       this.lista.terminadaEn = null;
@@ -44,8 +43,8 @@ export class AgregarPage {
     this.deseosService.guardarStorage();
   }
 
-  borrar(i: number) {
-    this.lista.items.splice(i, 1);
+  borrar(index: number) {
+    this.lista.items.splice(index, 1);
     this.deseosService.guardarStorage();
   }
 }
