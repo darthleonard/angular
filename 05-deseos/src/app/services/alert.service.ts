@@ -11,22 +11,23 @@ export class AlertService {
 
     async alertInput(args: AlertArgs) {
         const alert = await this.alertCtrl.create({
-            header: args.header,
+            header: args.headerTitle,
             inputs: [
               {
                 name: args.inputName,
                 type: 'text',
-                value: args.value,
-                placeholder: 'Nombre de la lista',
+                value: args.inputValue,
+                placeholder: args.inputPlaceholder,
               }
             ],
             buttons: [{
               text: 'Cancelar',
-              role: 'cancel'
+              role: 'cancel',
+              handler: args.btnCancelHandler
             },
             {
               text: args.btnOkText,
-              handler: args.handler
+              handler: args.btnOkHandler
             }]
           });
         alert.present();

@@ -15,19 +15,18 @@ export class Tab1Page {
               private router: Router) { }
 
   async agregarLista() {
-    const func = (data) => {
+    const args = new AlertArgs();
+    args.headerTitle = 'Crear Lista';
+    args.inputName = 'titulo';
+    args.inputPlaceholder = 'Nombre de la lista';
+    args.btnOkText = 'Crear';
+    args.btnOkHandler = (data) => {
       if (data.titulo.length === 0) {
         return;
       }
       const listaId = this.deseosService.crearLista(data.titulo);
       this.router.navigateByUrl(`/tabs/tab1/agregar/${ listaId }`);
     };
-
-    const args = new AlertArgs();
-    args.header = 'Crear Lista';
-    args.inputName = 'titulo';
-    args.handler = func;
-    args.btnOkText = 'Crear';
     this.alertService.alertInput(args);
   }
 }

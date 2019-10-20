@@ -1,7 +1,9 @@
 export class AlertArgs {
-    header: string;
+    headerTitle: string;
     inputName: string;
-    value: string;
+    inputValue: string;
+    inputPlaceholder: string;
     btnOkText: string;
-    handler: (data: any) => void;
+    btnOkHandler: (data: any) => void;
+    btnCancelHandler: (data: any) => void;
 }
