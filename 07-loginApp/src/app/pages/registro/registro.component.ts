@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -15,8 +16,12 @@ export class RegistroComponent implements OnInit {
     this.usuario = new UsuarioModel();
   }
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return;
+    }
     console.log('submit');
     console.log(this.usuario);
+    console.log(form);
   }
 }
