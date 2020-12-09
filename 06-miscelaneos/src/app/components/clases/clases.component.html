@@ -1,0 +1,21 @@
+<div class="alert" [ngClass]="alerta" role="alert">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum esse reiciendis alias animi. Velit dolores quas nihil nobis ea nesciunt ducimus, alias, voluptas vel quo nostrum voluptatum corporis voluptates vitae.
+</div>
+
+<button class="btn btn-info" (click)="alerta = 'alert-info'">Info</button>
+<button class="btn btn-success" (click)="alerta = 'alert-success'">Success</button>
+
+<br><br>
+
+<!-- <h3 [ngClass]="{'text-danger': propiedades.danger, 'text-info': !propiedades.danger}" >Hola mundo</h3> -->
+
+<!-- <button class="btn btn-danger" (click)="propiedades.danger = !propiedades.danger" >cambiar</button> -->
+
+<br><br>
+
+<h3>proceso asincrono</h3>
+<button class="btn btn-primary" (click)="ejecutar()" [disabled]="loading">
+    <i [ngClass]="{ 'fa-save':!loading, 'fa-refresh fa-spin':loading }" class="fa"></i>
+    <span *ngIf="!loading"> Guardar cambios</span>
+    <span *ngIf="loading"> guardando</span>
+</button>
