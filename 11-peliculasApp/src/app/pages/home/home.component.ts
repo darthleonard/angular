@@ -15,8 +15,11 @@ export class HomeComponent implements OnInit {
     const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
 
     if(pos > max) {
-      this.peliculasService.getCartelera().subscribe(r => {
-        this.movies.push(...r.results);
+      if(this.peliculasService.cargando) {
+        return;
+      }
+      this.peliculasService.getCartelera().subscribe(movies => {
+        this.movies.push(...movies);
       });
     }
   }
@@ -26,10 +29,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private peliculasService: PeliculasService) {
     this.peliculasService.getCartelera()
-    .subscribe( r => {
-      console.log(r);
-      this.movies = r.results;
-      this.moviesSlideShow = r.results;
+    .subscribe( movies => {
+      this.movies = movies;
+      this.moviesSlideShow = movies;
     });
   }
 
