@@ -12,7 +12,7 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
 })
 export class PeliculaComponent implements OnInit {
   movie: MovieResponse;
-  cast: Cast[];
+  cast: Cast[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, 
     private peliculasService: PeliculasService,
@@ -30,7 +30,7 @@ export class PeliculaComponent implements OnInit {
     });
 
     this.peliculasService.getCast(id).subscribe(c => {
-      this.cast = c;
+      this.cast = c.filter(a => a.profile_path !== null);
     });
 
   }
