@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 import { Cast } from 'src/app/interfaces/credits-response';
 import { MovieResponse } from 'src/app/interfaces/movie-response';
 import { PeliculasService } from 'src/app/services/peliculas.service';
@@ -21,17 +22,30 @@ export class PeliculaComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
-    this.peliculasService.getPeliculaDetalle(id).subscribe(movie => {
+
+    combineLatest([
+      this.peliculasService.getPeliculaDetalle(id),
+      this.peliculasService.getCast(id)
+    ]).subscribe(([movie, cast]) =>{
       if(!movie) {
         this.router.navigateByUrl('/home');
         return;
       }
       this.movie = movie;
+      this.cast = cast.filter(a => a.profile_path !== null);
     });
 
-    this.peliculasService.getCast(id).subscribe(c => {
-      this.cast = c.filter(a => a.profile_path !== null);
-    });
+    // this.peliculasService.getPeliculaDetalle(id).subscribe(movie => {
+    //   if(!movie) {
+    //     this.router.navigateByUrl('/home');
+    //     return;
+    //   }
+    //   this.movie = movie;
+    // });
+
+    // this.peliculasService.getCast(id).subscribe(c => {
+    //   this.cast = c.filter(a => a.profile_path !== null);
+    // });
 
   }
 
