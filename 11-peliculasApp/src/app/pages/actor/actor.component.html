@@ -1,0 +1,46 @@
+<div class="row" *ngIf="actor">
+    <div class="col-md-6">
+        <img [src]="actor.profile_path | poster" [alt]="actor.name" class="img-thumbnail">
+    </div>
+    <div class="col-md-6">
+        <h3> {{ actor.name }} </h3>
+        <small>{{ actor.place_of_birth }}, {{ actor.birthday }} - {{ (actor.deathday != null) ? actor.deathday : 'Today' }}</small>
+        <div class="row">
+            <div class="col">
+                <star-rating 
+                    [value]="actor.popularity"
+                    totalstars="10"
+                    checkedcolor="yellow" 
+                    uncheckedcolor="grey" 
+                    size="15px" 
+                    readonly="false" ></star-rating>
+            </div>
+            <div class="row">
+                <a [href]="actor.homepage"></a>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    {{ actor.biography }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <!-- <div class="row mt-5" *ngIf="cast.length > 0">
+                <div class="col">
+                    <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
+                </div>
+            </div> -->
+            slide movies
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col">
+            <button class="btn btn-outline-info"
+            (click)="onRegresar()">Regresar</button>
+        </div>
+    </div>
+</div>

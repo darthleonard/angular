@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { ActorResponse } from '../interfaces/actor-response';
 import { CarteleraResponse, Movie } from '../interfaces/cartelera-response';
 import { Cast, CreditsResponse } from '../interfaces/credits-response';
 import { MovieResponse } from '../interfaces/movie-response';
@@ -68,5 +69,11 @@ export class PeliculasService {
       map(r => r.cast),
       catchError(err => of ([]))
     );
+  }
+
+  getActor(id: string): Observable<ActorResponse> {
+    return this.http.get<ActorResponse>(`${ this.baseUrl }/person/${ id }`, {
+      params: this.params
+    })
   }
 }

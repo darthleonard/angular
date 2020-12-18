@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cast } from 'src/app/interfaces/credits-response';
 import Swiper from 'swiper';
 
@@ -10,7 +11,7 @@ import Swiper from 'swiper';
 export class CastSlideshowComponent implements OnInit, AfterViewInit {
   @Input() cast: Cast[];
 
-  constructor() { }
+  constructor(private router: Router) { }
   
   ngOnInit(): void {
     
@@ -22,6 +23,10 @@ export class CastSlideshowComponent implements OnInit, AfterViewInit {
       freeMode: true,
       spaceBetween: 15
     });
+  }
+
+  onActorClick(actor) {
+    this.router.navigate(['/actor', actor.id]);
   }
 
 }
