@@ -2,7 +2,7 @@
     <mt-card-title>Mapa</mt-card-title>
     <mat-card-content>
         <agm-map (mapClick)="agregarMarcador($event)" [latitude]="lat" [longitude]="lng" [zoom]="15">
-            <agm-marker **ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng">
+            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng">
                 <agm-info-window>
                     <strong> {{ marcador.titulo }} </strong>
                     <p>
