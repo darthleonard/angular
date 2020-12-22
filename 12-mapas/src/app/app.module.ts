@@ -21,7 +21,7 @@ import { MapaComponent } from './components/mapa/mapa.component'
     BrowserAnimationsModule,
     MaterialModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyDm8qNAdFZOkjXK-xime6dy1HTi3-nCFF0'
     })
   ],
   providers: [],
