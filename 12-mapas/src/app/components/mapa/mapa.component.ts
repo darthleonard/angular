@@ -18,7 +18,7 @@ export class MapaComponent implements OnInit {
     if(localStorage.getItem('marcadores')) {
       this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
     }
-    this.snackBar.open('construido', 'Cerrar', { duration: 3000 });
+    this.showSnackBar('construido');
   }
 
   ngOnInit(): void {
@@ -34,14 +34,14 @@ export class MapaComponent implements OnInit {
 
   guardarStorage() {
     localStorage.setItem('marcadores', JSON.stringify(this.marcadores));
-    this.snackBar.open('Marcador agregado', 'Cerrar');
+    this.showSnackBar('Marcador agregado');
   }
 
   borrarMarcador(i: number) {
     console.log(i);
     this.marcadores.splice(i, 1);
     this.guardarStorage();
-    this.snackBar.open('Marcador eliminado', 'Cerrar');
+    this.showSnackBar('Marcador eliminado');
   }
 
   editarMarcador(marcador: Marcador) {
@@ -51,8 +51,18 @@ export class MapaComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(result);
+      if(!result) {
+        return;
+      }
+      marcador.titulo = result.titulo;
+      marcador.desc = result.desc;
+      this.guardarStorage();
+      this.showSnackBar('Marcador actualizado');
     });
+  }
+
+  showSnackBar(msj: string) {
+    this.snackBar.open(msj, 'Cerrar', { duration: 3000 });
   }
 
 }
