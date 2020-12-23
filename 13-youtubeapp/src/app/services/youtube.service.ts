@@ -1,5 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { YoutubeResponse } from '../models/youtube.models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,13 @@ export class YoutubeService {
       .set('maxResults', '10')
       .set('playlistId', this.playList)
       .set('key', this.apiKey);
-    return this.http.get(url, { params });
+    return this.http.get<YoutubeResponse>(url, { params })
+      .pipe(
+        map(r => {
+          this.nextPageToken = r.nextPageToken;
+          return r.items;
+        }),
+        map(items => items.map(v => v.snippet))
+      );
   }
 }
