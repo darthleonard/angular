@@ -34,7 +34,7 @@ export class AuthService {
       authData
     ).pipe(
       map(r => {
-        this.guardarToken(r['idToken']);
+        this.guardarToken(r['idToken'], r['expiresIn']);
         return r;
       })
     );
@@ -50,15 +50,18 @@ export class AuthService {
         authData
       ).pipe(
         map(r => {
-          this.guardarToken(r['idToken']);
+          this.guardarToken(r['idToken'], r['expiresIn']);
           return r;
         })
       );
   }
 
-  private guardarToken(idToken: string) {
+  private guardarToken(idToken: string, expiresIn: number) {
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
+    let hoy = new Date();
+    hoy.setSeconds(expiresIn);
+    localStorage.setItem('expira', hoy.getTime().toString());
   }
 
   leerToken() {
@@ -71,6 +74,16 @@ export class AuthService {
   }
 
   estaAutenticado(): boolean {
-    return this.userToken.length > 2;
+    if(this.userToken.length < 2) {
+      return false;
+    }
+    const expira = Number(localStorage.getItem('expira'));
+    const expiraDate = new Date();
+    expiraDate.setTime(expira);
+    console.log(expiraDate + "  " + new Date());
+    if(expiraDate > new Date()) {
+      return true;
+    }
+    return false;
   }
 }
