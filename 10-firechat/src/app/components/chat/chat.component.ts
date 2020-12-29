@@ -11,14 +11,17 @@ export class ChatComponent {
   mensaje: string = "";
 
   constructor(private chatService: ChatService) {
-    this.chatService.cargarMensajes()
-      .subscribe((msjs: any[]) => {
-        
-      });
+    this.chatService.cargarMensajes().subscribe();
   }
 
   enviarMensaje() {
     console.log(this.mensaje);
+    if(this.mensaje.length === 0) {
+      return;
+    }
+    this.chatService.agregarMensaje(this.mensaje)
+      .then(() => this.mensaje = "")
+      .catch(err => console.error("error al enviar", err));
   }
 
 }

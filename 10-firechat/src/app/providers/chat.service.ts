@@ -1,20 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Mensaje } from '../interfaces/mensaje.interface';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private itemsCollection: AngularFirestoreCollection<any>;
-  chats: any[] = [];
+  private itemsCollection: AngularFirestoreCollection<Mensaje>;
+  chats: Mensaje[] = [];
 
-  constructor(private afs: AngularFirestore) {
-    
-  }
+  constructor(private afs: AngularFirestore) { }
   
   cargarMensajes() {
-    this.itemsCollection = this.afs.collection<any>('chats');
-    return this.itemsCollection.valueChanges();
+    this.itemsCollection = this.afs.collection<Mensaje>('chats');
+    return this.itemsCollection.valueChanges()
+    .pipe(
+      map((mensajes: Mensaje[]) => {
+        this.chats = mensajes;
+      }));
+  }
+
+  agregarMensaje(texto: string) {
+    // TODO falta el UID del usuario
+    let mensaje: Mensaje = {
+      nombre: 'Leo',
+      mensaje: texto,
+      fecha: new Date().getTime()
+    };
+
+    return this.itemsCollection.add(mensaje);
   }
 }
