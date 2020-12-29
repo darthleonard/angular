@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/providers/chat.service';
 
 @Component({
@@ -7,11 +7,20 @@ import { ChatService } from 'src/app/providers/chat.service';
   styles: [
   ]
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
   mensaje: string = "";
+  elemento: any;
 
   constructor(private chatService: ChatService) {
-    this.chatService.cargarMensajes().subscribe();
+    this.chatService.cargarMensajes()
+      .subscribe(() => {
+        setTimeout(() => {
+          this.elemento.scrollTop = this.elemento.scrollHeight;
+        }, 20);
+      });
+  }
+  ngOnInit(): void {
+    this.elemento = document.getElementById('app-mensajes');
   }
 
   enviarMensaje() {
