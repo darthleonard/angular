@@ -22,10 +22,17 @@ export class HeroeComponent implements OnInit {
       console.log("formulario no valido");
       return;
     }
-    this.heroesService.crearHeroe(this.heroe)
-      .subscribe(resp => {
-        console.log(resp);
-      });
+    if(this.heroe.id) {
+      this.heroesService.actualizarHeroe(this.heroe)
+        .subscribe(resp => {
+          console.log(resp);
+        });
+    } else {
+      this.heroesService.crearHeroe(this.heroe)
+        .subscribe(resp => {
+          console.log(resp);
+        });
+    }
   }
 
 }
