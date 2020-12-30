@@ -12,7 +12,7 @@ export class ChatService {
 
   private itemsCollection: AngularFirestoreCollection<Mensaje>;
   chats: Mensaje[] = [];
-  usuario: any = { };
+  usuario: any = {};
 
   constructor(private afs: AngularFirestore,
     public auth: AngularFireAuth) {
@@ -25,10 +25,14 @@ export class ChatService {
   }
   
   login(proveedor: string) {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    if(proveedor === 'google')
+      this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    else
+      this.auth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
   }
   
   logout() {
+    this.usuario = {};
     this.auth.signOut();
   }
 
