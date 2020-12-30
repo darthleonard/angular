@@ -9,6 +9,7 @@ import { CargaImagenesService } from 'src/app/services/carga-imagenes.service';
   ]
 })
 export class CargaComponent implements OnInit {
+  estaSobreElemento = false;
   archivos: FileItem[] = [];
 
   constructor(public cargaImagenes: CargaImagenesService) { }
@@ -18,6 +19,10 @@ export class CargaComponent implements OnInit {
 
   cargarImagenes() {
     this.cargaImagenes.cargarImagenesFirebase(this.archivos);
+  }
+
+  pruebaSobreElemento(event) {
+    console.log(event);
   }
 
 }
