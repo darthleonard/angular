@@ -25,13 +25,13 @@
             </thead>
             <tbody>
                 <tr *ngFor="let archivo of archivos">
-                    <td> {{ archivo.nombreArchivo }} </td>
+                    <td> {{ archivo.nombreArchivo }}</td>
                     <td> {{ archivo.archivo.size / 1024 / 1024 | number: '.2-2' }} MB</td>
                     <td>
                         <div class="progress">
                             <div class="progress-bar" 
                                 role="progressbar" 
-                                [ngStyle]="{ 'width': archivo.progreso +' %' }"></div>
+                                [ngStyle]="{ 'width': archivo.progreso +'%' }"></div>
                         </div>
                     </td>
                 </tr>
