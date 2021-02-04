@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+  </button>
+  <span>My App</span>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" opened>
+    <div class="menu-component">
+      <ul>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+      </ul>
+    </div>
+  </mat-drawer>
+    <div class="menu-component">
+      <ul>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+        <li>menu</li>
+      </ul>
+    </div>
+    <div style="display: inline-block; border: 1px solid;">
+      main content
+    </div>
+    <router-outlet></router-outlet>
+</mat-drawer-container>

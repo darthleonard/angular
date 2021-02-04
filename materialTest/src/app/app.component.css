@@ -1,0 +1,18 @@
+mat-drawer-container {
+    height: 100%;
+}
+
+mat-drawer {
+    min-width: 25%;
+    background-color: aqua;
+}
+
+.menu-component {
+    display: inline-block;
+    background-color: aqua;
+}
+
+.menu-component ul li {
+    text-decoration: none;
+    list-style: none;
+}
