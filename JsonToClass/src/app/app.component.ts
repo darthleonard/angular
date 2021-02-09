@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { data } from './data';
 
 @Component({
@@ -7,12 +7,26 @@ import { data } from './data';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('destiny') txtDestiny: ElementRef;
+
   result: string;
   mockSource: string;
 
   ngOnInit(): void {
     this.mockSource = data;
   }
+
+  clearContent() {
+    this.result = "";
+  }
+
+  copyToClipBoard(){
+    if (this.txtDestiny) {
+       this.txtDestiny.nativeElement.select();
+       document.execCommand("copy");
+       this.txtDestiny.nativeElement.setSelectionRange(0, 0);
+   }
+ }
 
   convert(source: string, className: string) {
     try {

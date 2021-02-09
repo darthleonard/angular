@@ -1,4 +1,11 @@
+header {
+    background-color: royalblue;
+    color: white;
+    padding: 1em;
+    margin-bottom: .5em;
+}
 textarea {
     width: 49%;
     margin-right: .75em;
+    float: right;
 }

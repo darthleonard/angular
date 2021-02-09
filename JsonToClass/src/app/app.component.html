@@ -1,9 +1,30 @@
-<div>
-  Class name: <input #className type="text" value=" MyClass">
-  <button (click)="convert(source.value, className.value)">Convert</button>
-</div>
-<hr>
 <!-- <textarea #source name="" id="" cols="90" rows="50">{"name":"John", "age":31, "city":"New York"}</textarea> -->
-<textarea #source cols="90" rows="50">{{ mockSource }}</textarea>
 
-<textarea name="result" cols="90" rows="50">{{ result }}</textarea>
+<header>
+  header
+</header>
+
+<div>
+  <textarea #destiny cols="90" rows="30">{{ result }}</textarea>
+  <textarea #source cols="90" rows="30">{{ mockSource }}</textarea>
+</div>
+
+<div class="container float-right mt-3">
+  Class name: <input #className type="text" value=" MyClass">
+  <button type="button" 
+          class="btn btn-danger ml-3" 
+          (click)="clearContent()">
+          Clear
+  </button>
+  <button type="button" 
+          class="btn btn-primary ml-3" 
+          (click)="convert(source.value, className.value)">
+          Convert
+  </button>
+  <button type="button" 
+    class="btn btn-success ml-3" 
+    *ngIf="result.length > 0"
+    (click)="copyToClipBoard()">
+    Copy result
+  </button>
+</div>
