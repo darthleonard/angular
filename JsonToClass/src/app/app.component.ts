@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { data } from './data';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   result: string;
+  mockSource: string;
+
+  ngOnInit(): void {
+    this.mockSource = data;
+  }
 
   convert(source: string, className: string) {
     try {
