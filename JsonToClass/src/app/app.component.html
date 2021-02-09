@@ -5,12 +5,12 @@
 </header>
 
 <div>
-  <textarea #destiny cols="90" rows="30">{{ result }}</textarea>
+  <textarea #destiny cols="90" rows="30" readonly>{{ result }}</textarea>
   <textarea #source cols="90" rows="30">{{ mockSource }}</textarea>
 </div>
 
 <div class="container float-right mt-3">
-  Class name: <input #className type="text" value=" MyClass">
+  Class name: <input #className type="text" value="MyClass">
   <button type="button" 
           class="btn btn-danger ml-3" 
           (click)="clearContent()">

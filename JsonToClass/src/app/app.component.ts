@@ -13,20 +13,21 @@ export class AppComponent implements OnInit {
   mockSource: string;
 
   ngOnInit(): void {
+    this.result = "";
     this.mockSource = data;
   }
 
   clearContent() {
     this.result = "";
   }
-
-  copyToClipBoard(){
+  
+  copyToClipBoard() {
     if (this.txtDestiny) {
-       this.txtDestiny.nativeElement.select();
-       document.execCommand("copy");
-       this.txtDestiny.nativeElement.setSelectionRange(0, 0);
-   }
- }
+      this.txtDestiny.nativeElement.select();
+      document.execCommand("copy");
+      this.txtDestiny.nativeElement.setSelectionRange(0, 0);
+    }
+  }
 
   convert(source: string, className: string) {
     try {
