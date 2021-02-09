@@ -4,8 +4,11 @@ header {
     padding: 1em;
     margin-bottom: .5em;
 }
+
 textarea {
     width: 49%;
+    height: auto;
     margin-right: .75em;
     float: right;
+    resize: none;
 }
