@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   result: string;
   mockSource: string;
-  rows = 20;
+  rows = 25;
 
   ngOnInit(): void {
     this.result = "";

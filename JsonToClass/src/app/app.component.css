@@ -11,6 +11,7 @@ textarea {
     margin-right: .75em;
     float: right;
     resize: none;
+    font-size: small;
     background: url(http://i.imgur.com/2cOaJ.png);
     background-attachment: local;
     background-repeat: no-repeat;
