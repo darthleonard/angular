@@ -1,12 +1,11 @@
-<!-- <textarea #source name="" id="" cols="90" rows="50">{"name":"John", "age":31, "city":"New York"}</textarea> -->
-
 <header>
   header
 </header>
 
 <div>
-  <textarea #destiny rows="30" readonly>{{ result }}</textarea>
-  <textarea #source rows="30">{{ mockSource }}</textarea>
+  <textarea #destiny [rows]="rows" readonly>{{ result }}</textarea>
+  <textarea #source [rows]="rows">{{ mockSource }}</textarea>
+  <!-- <textarea #source rows="30">{"name":"John", "age":31, "city":"New York"}</textarea> -->
 </div>
 
 <div class="container float-right mt-3">

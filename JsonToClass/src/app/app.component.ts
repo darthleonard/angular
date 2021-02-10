@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
 
   result: string;
   mockSource: string;
+  rows = 20;
 
   ngOnInit(): void {
     this.result = "";
@@ -35,19 +36,20 @@ export class AppComponent implements OnInit {
       this.result = ""
       if(this.isIterable(myObj)) {
         for(let obj of myObj) {
-          this.result += `${ className } {\n`;
-          this.result += this.createProperties(obj);
-          this.result += "\n},\n"
+          this.result += this.createClassDefinition(obj, className);
+          if(obj !== myObj[myObj.length - 1]) {
+            this.result += ', ';
+          }
         }
       } else {
-        //this.result = this.create(myObj) single object
+        this.result = this.createClassDefinition(myObj, className);
       }
     } catch(error) {
       this.result = error;
     }
   }
 
-  createProperties(obj) {
+  createClassDefinition(obj, className) {
     let properties = "";
     let objProperties = Object.getOwnPropertyNames(obj);
     for(let prop of objProperties) {
@@ -58,7 +60,7 @@ export class AppComponent implements OnInit {
         properties += ",\n";
       }
     }
-    return properties;
+    return `${ className }\n{\n${ properties }\n}\n`;
   }
 
   typeProperty(value) {
