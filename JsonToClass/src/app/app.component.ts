@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
         properties += ",\n";
       }
     }
-    return `${ className }\n{\n${ properties }\n}\n`;
+    return `new ${ className }\n{\n${ properties }\n}\n`;
   }
 
   typeProperty(value) {
